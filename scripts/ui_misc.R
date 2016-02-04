@@ -1,0 +1,18 @@
+tabPanel("Misc",
+         tabsetPanel(
+           tabPanel("States",
+                    sliderInput("nBins","nBins",min=1,max=100,value=20,step=1),
+                    plotOutput("plotTab")
+           ),
+           tabPanel("Transitions"),
+           tabPanel("Results"),
+           tabPanel("Hubert",
+                    numericInput("alpha","alpha",min=0.01,max=0.2,step=0.01,value=0.05),
+                    plotOutput("plotHub")
+           ),
+           tabPanel("Factorize",
+                    numericInput("k","k",min=1,max=10,step=1,value=5),
+                    plotOutput("plotFac")
+           )
+         )
+)#tabPanel

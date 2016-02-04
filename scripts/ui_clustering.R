@@ -1,0 +1,34 @@
+tabPanel("Clustering",
+         fluidRow(
+           column(width=2,
+                  selectInput("clustype","clustype",
+                              choices=c("coniss","conslink","naive"),
+                              selected="coniss")
+           ),
+           column(width=2,
+                  numericInput("nclust","nclust",
+                               min=2,max=20,value=3,step=1)
+           ),
+           column(width=8,
+                  br(),
+                  actionButton(inputId="i_clustering",label="Click here for more info about the clustering method"),
+                  uiOutput("i_clustering"))
+         ),#fluidRow
+         fluidRow(
+           column(width=3,
+                  wellPanel(h4("Weights"),fluidRow(uiOutput("uiWeights")))),
+           column(width=9,
+                  tabsetPanel(
+                    tabPanel("Series",
+                             plotOutput("plotClust"),
+                             downloadButton("dltabclassif","Table"),
+                             downloadButton("dlfigclassifseries","Figure")
+                    ),
+                    tabPanel("Tree",
+                             plotOutput("plotTree"),
+                             downloadButton("dlfigclassiftree","Figure")
+                    )
+                  )#tabsetPanel
+           )
+         )#fluidRow
+)#tabPanel
